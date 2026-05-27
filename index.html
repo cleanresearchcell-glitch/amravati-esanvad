@@ -154,14 +154,18 @@
 </div>
 <script>
 
-const form = document.getElementById("meetingForm");
+const form =
+document.getElementById("meetingForm");
 
-form.addEventListener("submit", async (e) => {
+form.addEventListener("submit",
+async function(e){
 
   e.preventDefault();
 
   const inputs =
-    document.querySelectorAll("input, textarea");
+  document.querySelectorAll(
+    "input, textarea"
+  );
 
   const data = {
 
@@ -177,17 +181,22 @@ form.addEventListener("submit", async (e) => {
 
   try {
 
+    const response =
     await fetch(
-      "https://script.google.com/macros/s/AKfycbxQxxDPSa71wAucrq-PHgKFmgYIbcfYtZ8ncjq9cQBWrjhatESgwviWWrdEkqFSQAv_/exec",
+      "YOUR_WEB_APP_URL",
       {
 
         method: "POST",
 
-        body: JSON.stringify(data),
+        mode: "no-cors",
 
         headers: {
-          "Content-Type": "application/json"
-        }
+          "Content-Type":
+          "application/json"
+        },
+
+        body:
+        JSON.stringify(data)
 
       }
     );
@@ -198,13 +207,15 @@ form.addEventListener("submit", async (e) => {
 
     form.reset();
 
-  } catch(error){
+  }
 
-    alert(
-      "Error submitting form"
-    );
+  catch(error){
 
     console.log(error);
+
+    alert(
+      "Submission failed"
+    );
 
   }
 
